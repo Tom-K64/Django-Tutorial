@@ -9,3 +9,8 @@
                       ->One to Many
                       ->Many to Many
 
+REST FRAMEWORK: (CRUD)
+->POST   (c)
+->GET    (r)
+->PUT    (u)
+->DELETE (d)

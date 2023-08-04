@@ -6,6 +6,7 @@ class StudentDetailsModel(models.Model):
     phone_number=models.CharField(max_length=15,null=True, blank=True)
     gender=models.CharField(max_length=10,null=True, blank=True)
     standard=models.IntegerField(null=True, blank=True)
+    age=models.IntegerField(null=True, blank=True)
 
 """
 anish
