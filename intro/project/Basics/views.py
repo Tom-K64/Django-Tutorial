@@ -43,6 +43,8 @@ STATUS CODES:
 200 - everything goes perfectly
 400 - something went wrong
 """
+
+####These views are created witgout using Serializer####
 class StudentDetailsModelListAPIView(views.APIView):#GET -> READ
     def get(self, request):
         obj=StudentDetailsModel.objects.all()
@@ -142,3 +144,4 @@ DELETE API
 (List + Create) API
 (GET,PUT,DELETE) API
 """
+
