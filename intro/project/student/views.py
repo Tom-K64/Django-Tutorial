@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import views,status
+from rest_framework import views,status,generics
 from rest_framework.response import Response
 from .serializers import StudentDetailModelListSerializer,StudentDetailModelCreateSerializer,StudentDetailModelUpdateSerializer
 from .models import StudentDetailModel
@@ -54,3 +54,45 @@ class StudentDetailModelUpdateAPIView(views.APIView):
             return Response({"message":"Student Detail deleted Successfully"},status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"message":f"something went wrong : {e}"},status=status.HTTP_400_BAD_REQUEST)
+
+
+#####################################GENERICS################################################
+
+class StudentDetailModelListGenericAPIView(generics.ListAPIView):
+    queryset=StudentDetailModel.objects.all()
+    serializer_class=StudentDetailModelListSerializer
+
+class StudentDetailModelGetGenericAPIView(generics.RetrieveAPIView):
+    queryset=StudentDetailModel.objects.all()
+    serializer_class=StudentDetailModelUpdateSerializer
+
+class StudentDetailModelCreateGenericAPIView(generics.CreateAPIView):
+    queryset=StudentDetailModel.objects.all()
+    serializer_class=StudentDetailModelCreateSerializer
+
+class StudentDetailModelUpdateGenericAPIView(generics.UpdateAPIView):
+    queryset=StudentDetailModel.objects.all()
+    serializer_class=StudentDetailModelUpdateSerializer
+
+class StudentDetailModelDeleteGenericAPIView(generics.DestroyAPIView):
+    queryset=StudentDetailModel.objects.all()
+    serializer_class=StudentDetailModelUpdateSerializer
+
+class StudentDetailModelListCreateGenericAPIView(generics.ListCreateAPIView):
+    queryset=StudentDetailModel.objects.all()
+    serializer_class=StudentDetailModelCreateSerializer
+
+class StudentDetailModelRUDGenericAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset=StudentDetailModel.objects.all()
+    serializer_class=StudentDetailModelUpdateSerializer
+
+# generics.RetrieveUpdateAPIView
+# generics.RetrieveDestroyAPIView
+
+
+"""
+TASK:
+1- Create crud apis without serializer
+2- Create crud apis with serializer
+3- Create crud apis using generics
+"""
